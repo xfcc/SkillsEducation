@@ -2,36 +2,144 @@
 
 .page-theory {
   min-height: 100vh;
-  padding: $spacing-lg;
+  padding: 0 $spacing-lg $spacing-2xl;
   padding-bottom: 120rpx;
+  background: $color-bg-page;
 }
 
-.section {
-  margin-bottom: $spacing-xl;
+.theory-header {
+  padding: 16rpx 0 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   &__title {
-    font-size: $font-size-md;
-    font-weight: $font-weight-semibold;
+    font-size: 40rpx;
+    font-weight: $font-weight-bold;
     color: $color-text-primary;
-    margin-bottom: $spacing-sm;
-    display: block;
+    letter-spacing: -0.02em;
+  }
+
+  &__search {
+    width: 56rpx;
+    height: 56rpx;
+    border-radius: 50%;
+    background: $color-bg-page;
   }
 }
 
-.theory-entry {
+.theory-main {
+  padding-top: 32rpx;
   display: flex;
-  align-items: center;
-  padding: $spacing-md 0;
+  flex-direction: column;
+  gap: 32rpx;
+}
 
-  &__label {
-    flex: 1;
-    font-size: $font-size-base;
-    font-weight: $font-weight-medium;
+.theory-card {
+  padding: 40rpx !important;
+  border-radius: $radius-2xl !important;
+  box-shadow: $shadow-soft !important;
+  border: 1rpx solid $color-border-light !important;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24rpx;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 24rpx;
+  }
+
+  &__icon {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon-text {
+    font-size: 40rpx;
+  }
+
+  &__title {
+    font-size: 34rpx;
+    font-weight: $font-weight-bold;
     color: $color-text-primary;
+    letter-spacing: -0.02em;
+  }
+
+  &__count {
+    padding: 12rpx 24rpx;
+    border-radius: $radius-md;
+    background: $color-bg-elevated;
+    border: 1rpx solid $color-border-light;
+    display: flex;
+    align-items: baseline;
+    gap: 8rpx;
+  }
+
+  &__count-num {
+    font-size: 36rpx;
+    font-weight: 800;
+    color: $color-text-primary;
+    font-family: $font-mono;
+    letter-spacing: -0.02em;
+  }
+
+  &__count-unit {
+    font-size: 22rpx;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
+  }
+
+  &__desc {
+    font-size: 26rpx;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
+    line-height: 1.6;
+    margin-bottom: 32rpx;
+  }
+
+  &__foot {
+    padding-top: 24rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16rpx;
+  }
+
+  &__tag {
+    font-size: 22rpx;
+    color: $color-text-secondary;
+    background: $color-bg-elevated;
+    border: 1rpx solid $color-border-light;
+    padding: 12rpx 20rpx;
+    border-radius: $radius-md;
+    font-weight: $font-weight-medium;
   }
 
   &__arrow {
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 50%;
+    background: $color-bg-elevated;
+    border: 1rpx solid $color-border-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
     color: $color-text-tertiary;
-    font-size: $font-size-lg;
+    font-weight: 600;
   }
 }

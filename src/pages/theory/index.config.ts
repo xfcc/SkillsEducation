@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: '理论',
+  navigationBarTitleText: '理论库',
 })

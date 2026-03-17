@@ -16,12 +16,17 @@ import type {
   ProfileReport,
   Guidebook,
   CarouselItem,
+  HeroItem,
+  ClinicalFrontierItem,
+  LiveNowItem,
+  DailyQuiz,
+  PracticeCounts,
 } from './types'
 import { mockLearningMap } from './mock/learningMap'
-import { mockRadarFeed, mockCarousel } from './mock/feed'
+import { mockRadarFeed, mockCarousel, mockHero, mockHeroList, mockClinicalFrontier, mockLiveNow } from './mock/feed'
 import { mockGuidebooks } from './mock/guidebook'
 import { mockCategories, mockCourses, mockCases, mockClasses } from './mock/theory'
-import { mockCamps, mockCampDays, mockQuizQuestions, mockLeaderboard } from './mock/practice'
+import { mockCamps, mockCampDays, mockQuizQuestions, mockLeaderboard, mockDailyQuiz, mockPracticeCounts } from './mock/practice'
 import { mockUserProfile, mockUserPoints, mockBadges, mockLearningStats, mockReports } from './mock/profile'
 
 export async function getLearningMap(): Promise<LearningMap> {
@@ -37,6 +42,36 @@ export async function getRadarFeed(): Promise<FeedItem[]> {
 export async function getCarousel(): Promise<CarouselItem[]> {
   await delay(100)
   return mockCarousel
+}
+
+export async function getHero(): Promise<HeroItem> {
+  await delay(100)
+  return mockHero
+}
+
+export async function getHeroList(): Promise<HeroItem[]> {
+  await delay(100)
+  return mockHeroList
+}
+
+export async function getClinicalFrontier(): Promise<ClinicalFrontierItem[]> {
+  await delay(150)
+  return mockClinicalFrontier
+}
+
+export async function getLiveNow(): Promise<LiveNowItem | null> {
+  await delay(100)
+  return mockLiveNow
+}
+
+export async function getDailyQuiz(): Promise<DailyQuiz | null> {
+  await delay(150)
+  return mockDailyQuiz
+}
+
+export async function getPracticeCounts(): Promise<PracticeCounts> {
+  await delay(100)
+  return mockPracticeCounts
 }
 
 export async function getGuidebooks(): Promise<Guidebook[]> {

@@ -1,0 +1,19 @@
+@import '../../../design-tokens.scss';
+
+.page-literature {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  padding-bottom: 120rpx;
+}
+
+.page-literature__intro {
+  margin-bottom: $spacing-lg;
+  font-size: $font-size-base;
+  color: $color-text-secondary;
+  line-height: 1.6;
+}
+
+.page-literature__placeholder {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}

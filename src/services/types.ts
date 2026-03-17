@@ -33,11 +33,43 @@ export interface CarouselItem {
   link?: string
 }
 
+/** 首页单 Hero：核心训练营 */
+export interface HeroItem {
+  id: string
+  badge: string
+  title: string
+  meta: string
+  link: string
+}
+
+/** 临床前沿分类 */
+export type ClinicalFrontierCategory = '指南解读' | '经典病例' | '术式精讲' | '前沿文献' | '病例复盘'
+
+export interface ClinicalFrontierItem {
+  id: string
+  category: ClinicalFrontierCategory
+  date: string
+  title: string
+  excerpt: string
+  link?: string
+}
+
+/** 当前直播（浮层） */
+export interface LiveNowItem {
+  id: string
+  title: string
+  link?: string
+  liveId?: string
+}
+
 // User assets (for Profile, reused on Home if needed)
+
 export interface UserProfile {
   id: string
   name: string
   avatar?: string
+  department?: string
+  position?: string
 }
 
 export interface UserPoints {
@@ -136,6 +168,29 @@ export interface LeaderboardEntry {
   name: string
   score: number
   completedAt?: string
+}
+
+/** 每日一题（演练页） */
+export interface DailyQuizOption {
+  text: string
+  percent: number
+  isCorrect?: boolean
+}
+
+export interface DailyQuiz {
+  id: string
+  dateLabel: string
+  tags: string[]
+  question: string
+  options: DailyQuizOption[]
+  participantCount: number
+  commentCount: number
+}
+
+/** 演练页入口数量 */
+export interface PracticeCounts {
+  openCampsCount: number
+  joinedClassesCount: number
 }
 
 // Profile: reports

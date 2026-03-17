@@ -2,52 +2,306 @@
 
 .page-practice {
   min-height: 100vh;
-  padding: $spacing-lg;
+  padding: 0 $spacing-lg $spacing-2xl;
   padding-bottom: 120rpx;
+  background: $color-bg-page;
 }
 
-.section {
-  margin-bottom: $spacing-xl;
+.practice-header {
+  padding: 16rpx 0 12rpx;
+  border-bottom: 1rpx solid rgba($color-border-light, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   &__title {
-    font-size: $font-size-md;
+    font-size: 40rpx;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    letter-spacing: -0.02em;
+  }
+
+  &__icon {
+    width: 56rpx;
+    height: 56rpx;
+    border-radius: 50%;
+    background: $color-bg-page;
+  }
+}
+
+.practice-main {
+  padding-top: 32rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 40rpx;
+}
+
+.practice-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.practice-entry-card {
+  padding: 32rpx !important;
+  border-radius: 40rpx !important;
+  box-shadow: $shadow-soft !important;
+  border: 1rpx solid $color-border-light !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 32rpx;
+  }
+
+  &__icon {
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 32rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--blue {
+      background: #EFF6FF;
+    }
+    &--orange {
+      background: #FFF7ED;
+    }
+  }
+
+  &__icon-text {
+    font-size: 44rpx;
+  }
+
+  &__title {
+    display: block;
+    font-size: 32rpx;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    line-height: 1.25;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 24rpx;
+    color: $color-text-tertiary;
+    margin-top: 8rpx;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 16rpx;
+  }
+
+  &__badge {
+    font-size: 22rpx;
+    font-weight: $font-weight-bold;
+    padding: 8rpx 16rpx;
+    border-radius: $radius-md;
+
+    &--blue {
+      background: #EFF6FF;
+      color: #2563EB;
+    }
+    &--orange {
+      background: #FFF7ED;
+      color: #EA580C;
+    }
+  }
+
+  &__arrow {
+    font-size: 28rpx;
+    color: $color-text-tertiary;
+    font-weight: 600;
+  }
+}
+
+.practice-section {
+  &__title {
+    font-size: 26rpx;
+    font-weight: $font-weight-semibold;
+    color: $color-text-tertiary;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 24rpx;
+    padding-left: 8rpx;
+    display: block;
+  }
+
+  &--quiz {
+    margin-top: 8rpx;
+  }
+}
+
+.practice-tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24rpx;
+}
+
+.practice-tool-card {
+  padding: 32rpx !important;
+  border-radius: 40rpx !important;
+  box-shadow: $shadow-soft !important;
+  border: 1rpx solid $color-border-light !important;
+
+  &__icon {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 24rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24rpx;
+  }
+
+  &__icon-text {
+    font-size: 40rpx;
+  }
+
+  &__title {
+    display: block;
+    font-size: 28rpx;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    margin-bottom: 8rpx;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 20rpx;
+    color: $color-text-tertiary;
+    line-height: 1.4;
+  }
+}
+
+.practice-quiz-date {
+  display: flex;
+  align-items: baseline;
+  gap: 12rpx;
+  margin-bottom: 24rpx;
+  padding-left: 8rpx;
+
+  &__num {
+    font-size: 40rpx;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    font-family: $font-mono;
+    letter-spacing: -0.02em;
+  }
+
+  &__month {
+    font-size: 24rpx;
+    font-weight: $font-weight-semibold;
+    color: $color-text-tertiary;
+  }
+}
+
+.practice-quiz-card {
+  padding: 40rpx !important;
+  border-radius: $radius-2xl !important;
+  box-shadow: $shadow-soft !important;
+  border: 1rpx solid $color-border-light !important;
+
+  &__tags {
+    display: flex;
+    align-items: center;
+    gap: 16rpx;
+    margin-bottom: 24rpx;
+    font-size: 22rpx;
+    font-weight: $font-weight-bold;
+    color: #B45309;
+  }
+
+  &__tag {
+    &:not(:first-child)::before {
+      content: '|';
+      margin-right: 16rpx;
+      color: #FCD34D;
+    }
+  }
+
+  &__question {
+    display: block;
+    font-size: 30rpx;
     font-weight: $font-weight-semibold;
     color: $color-text-primary;
-    margin-bottom: $spacing-sm;
+    line-height: 1.5;
+    margin-bottom: 32rpx;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 20rpx;
+  }
+
+  &__foot {
+    margin-top: 32rpx;
+    padding-top: 24rpx;
+    border-top: 1rpx solid $color-border-light;
+    display: flex;
+    justify-content: space-between;
+    font-size: 22rpx;
+    font-weight: $font-weight-medium;
+    color: $color-text-tertiary;
+  }
+
+  &__meta {
     display: block;
   }
 }
 
-.practice-entry {
-  display: flex;
-  align-items: center;
-  padding: $spacing-md 0;
+.practice-quiz-option {
+  position: relative;
+  border-radius: 24rpx;
+  padding: 28rpx 24rpx;
+  overflow: hidden;
+  border: 2rpx solid $color-border-light;
+  background: $color-bg-elevated;
 
-  &__main {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 4rpx;
+  &--correct {
+    border-color: #F59E0B;
+    background: #FFFBEB;
   }
 
-  &__label {
-    font-size: $font-size-base;
+  &__bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(245, 158, 11, 0.15);
+    z-index: 0;
+  }
+
+  &__row {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__text {
+    font-size: 26rpx;
     font-weight: $font-weight-medium;
     color: $color-text-primary;
   }
 
-  &__desc {
-    font-size: $font-size-xs;
-    color: $color-text-tertiary;
+  &__percent {
+    font-size: 24rpx;
+    font-family: $font-mono;
+    font-weight: $font-weight-bold;
+    color: #B45309;
   }
 
-  &__arrow {
-    color: $color-text-tertiary;
-    font-size: $font-size-lg;
+  &--correct .practice-quiz-option__text {
+    color: #92400E;
+    font-weight: $font-weight-semibold;
   }
-}
-
-.practice-entry--disabled {
-  opacity: 0.55;
 }

@@ -2,88 +2,356 @@
 
 .page-profile {
   min-height: 100vh;
-  padding: $spacing-lg;
-  padding-bottom: 120rpx;
-}
-
-.section {
-  margin-bottom: $spacing-xl;
-
-  &__title {
-    font-size: $font-size-md;
-    font-weight: $font-weight-semibold;
-    color: $color-text-primary;
-    margin-bottom: $spacing-sm;
-    display: block;
-  }
+  padding: 0 $spacing-lg $spacing-2xl;
+  padding-bottom: 140rpx;
+  background: $color-bg-page;
 }
 
 .profile-header {
-  margin-bottom: $spacing-lg;
-  padding-bottom: $spacing-md;
-  border-bottom: 1rpx solid $color-border-light;
+  padding: 12rpx 0 8rpx;
+  background: rgba($color-bg-page, 0.9);
+  display: flex;
+  align-items: center;
+
+  &__title {
+    font-size: 40rpx;
+    font-weight: $font-weight-bold;
+    color: transparent;
+    user-select: none;
+  }
+}
+
+.profile-main {
+  padding-top: 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
+}
+
+.profile-hero {
+  border-radius: 56rpx;
+  padding: 40rpx;
+  background: $color-hero-bg;
+  position: relative;
+  overflow: hidden;
+
+  &__glow {
+    position: absolute;
+    top: -80rpx;
+    right: -80rpx;
+    width: 280rpx;
+    height: 280rpx;
+    background: rgba(59, 130, 246, 0.2);
+    border-radius: 50%;
+    filter: blur(60rpx);
+  }
+
+  &__top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 24rpx;
+    margin-bottom: 48rpx;
+  }
+
+  &__avatar-wrap {
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 50%;
+    padding: 4rpx;
+    background: linear-gradient(135deg, #60a5fa, #6366f1);
+  }
+
+  &__avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: $color-hero-bg;
+    border: 4rpx solid $color-hero-bg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__avatar-icon {
+    font-size: 48rpx;
+  }
 
   &__name {
-    font-size: $font-size-lg;
+    display: block;
+    font-size: 36rpx;
+    font-weight: $font-weight-bold;
+    color: $color-text-inverse;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  &__subtitle {
+    display: block;
+    font-size: 24rpx;
+    font-weight: $font-weight-medium;
+    color: $color-text-tertiary;
+    margin-top: 8rpx;
+  }
+
+  &__stats {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32rpx;
+  }
+
+  &__stat-label {
+    display: block;
+    font-size: 22rpx;
+    font-weight: $font-weight-medium;
+    color: $color-text-tertiary;
+    margin-bottom: 8rpx;
+  }
+
+  &__stat-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8rpx;
+  }
+
+  &__stat-num {
+    font-size: 56rpx;
+    font-weight: 800;
+    color: $color-text-inverse;
+    font-family: $font-mono;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  &__stat-unit {
+    font-size: 24rpx;
+    font-weight: $font-weight-medium;
+    color: $color-text-tertiary;
+  }
+
+  &__badges {
+    position: relative;
+    z-index: 1;
+    margin-top: 40rpx;
+    padding-top: 32rpx;
+    border-top: 1rpx solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__badges-title {
+    display: block;
+    font-size: 22rpx;
+    font-weight: $font-weight-medium;
+    color: $color-text-tertiary;
+  }
+
+  &__badges-hint {
+    display: block;
+    font-size: 18rpx;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 4rpx;
+  }
+
+  &__badges-list {
+    display: flex;
+    align-items: center;
+    gap: 20rpx;
+  }
+
+  &__badge {
+    width: 56rpx;
+    height: 56rpx;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--unlocked {
+      background: linear-gradient(to bottom, #fde68a, #f59e0b);
+      box-shadow: 0 0 20rpx rgba(245, 158, 11, 0.3);
+    }
+
+    &--locked {
+      background: $color-primary-light;
+      border: 1rpx solid rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  &__badge-icon {
+    font-size: 28rpx;
+  }
+}
+
+.profile-quick {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24rpx;
+}
+
+.profile-quick-item {
+  padding: 32rpx !important;
+  border-radius: 40rpx !important;
+  box-shadow: $shadow-soft !important;
+  border: 1rpx solid $color-border-light !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  &__icon-wrap {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 16rpx;
+  }
+
+  &__dot {
+    position: absolute;
+    top: 8rpx;
+    right: 8rpx;
+    width: 16rpx;
+    height: 16rpx;
+    background: $color-error;
+    border-radius: 50%;
+    border: 2rpx solid #fff;
+  }
+
+  &__icon {
+    font-size: 40rpx;
+  }
+
+  &__label {
+    font-size: 24rpx;
     font-weight: $font-weight-semibold;
     color: $color-text-primary;
   }
 }
 
-.profile-assets {
-  display: flex;
-  gap: $spacing-xl;
-  margin-bottom: $spacing-lg;
+.profile-section {
+  &__title {
+    font-size: 26rpx;
+    font-weight: $font-weight-semibold;
+    color: $color-text-tertiary;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 24rpx;
+    padding-left: 8rpx;
+    display: block;
+  }
+
+  &--settings {
+    padding-top: 16rpx;
+  }
 }
 
-.asset-item {
-  flex: 1;
-  padding: $spacing-md;
-  background: $color-bg-elevated;
-  border-radius: $radius-md;
+.profile-reports {
+  border-radius: $radius-2xl !important;
+  box-shadow: $shadow-soft !important;
+  border: 1rpx solid $color-border-light !important;
+  overflow: hidden;
+}
+
+.profile-report-row {
+  padding: 32rpx $spacing-lg;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid $color-border-light;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 24rpx;
+  }
+
+  &__pdf {
+    width: 56rpx;
+    height: 56rpx;
+    border-radius: $radius-md;
+    font-size: 20rpx;
+    font-weight: $font-weight-bold;
+    font-family: $font-mono;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--AIFV { background: #EEF2FF; color: #4f46e5; }
+    &--iEP { background: #EFF6FF; color: #2563eb; }
+    &--department { background: #ECFDF5; color: #059669; }
+    &--journey { background: #FFFBEB; color: #d97706; }
+  }
+
+  &__title {
+    display: block;
+    font-size: 28rpx;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    line-height: 1.2;
+    margin-bottom: 8rpx;
+  }
+
+  &__date {
+    display: block;
+    font-size: 22rpx;
+    color: $color-text-tertiary;
+    font-family: $font-mono;
+  }
+
+  &__arrow {
+    font-size: 28rpx;
+    color: $color-text-tertiary;
+  }
+}
+
+.profile-settings {
+  padding: 0 16rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.profile-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   &__label {
-    font-size: $font-size-xs;
-    color: $color-text-tertiary;
-    display: block;
-    margin-bottom: $spacing-xs;
-  }
-}
-
-.profile-badges {
-  &__title {
-    font-size: $font-size-sm;
+    font-size: 28rpx;
+    font-weight: $font-weight-medium;
     color: $color-text-secondary;
-    display: block;
-    margin-bottom: $spacing-sm;
   }
-  &__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-sm;
-  }
-}
 
-.badge-dot {
-  padding: $spacing-xs $spacing-sm;
-  border-radius: $radius-sm;
-  background: $color-bg-muted;
-
-  &__name {
-    font-size: $font-size-xs;
+  &__arrow {
+    font-size: 28rpx;
     color: $color-text-tertiary;
   }
-  &--unlocked {
-    background: rgba($color-accent, 0.12);
-    .badge-dot__name {
-      color: $color-accent;
-    }
-  }
 }
 
-.list-item-date {
-  font-size: $font-size-xs;
-  color: $color-text-tertiary;
-  display: block;
-  margin-top: 4rpx;
+.profile-bottom {
+  height: 24rpx;
+}
+
+.profile-settings-link {
+  padding: 32rpx 16rpx 24rpx;
+  text-align: center;
+
+  &__text {
+    font-size: 28rpx;
+    font-weight: $font-weight-medium;
+    color: $color-tag-primary;
+  }
 }

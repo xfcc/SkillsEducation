@@ -1,11 +1,25 @@
 import { View, Text, ScrollView } from '@tarojs/components'
 import { useEffect, useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Card, DataNumber, ListItem } from '../../components'
-import { useUserStore } from '../../stores/user'
+import { Card } from '../../components'
 import { getUserProfile, getLearningStats, getProfileReports } from '../../services/api'
+import { useUserStore } from '../../stores/user'
 import type { UserProfile, ProfileReport } from '../../services/types'
 import './index.scss'
+
+const QUICK_ACTIONS = [
+  { id: 'cases', icon: '📄', iconBg: '#EFF6FF', label: '我的病例', url: '', hasDot: false },
+  { id: 'live', icon: '📺', iconBg: '#FEF2F2', label: '直播报名', url: '', hasDot: true },
+  { id: 'favorite', icon: '📑', iconBg: '#FFFBEB', label: '内容收藏', url: '', hasDot: false },
+] as const
+
+const SETTINGS_ITEMS = [
+  { id: 'profile', label: '个人资料' },
+  { id: 'tags', label: '兴趣标签' },
+  { id: 'history', label: '浏览历史' },
+  { id: 'feedback', label: '意见反馈' },
+  { id: 'privacy', label: '隐私与协议' },
+] as const
 
 export default function Profile() {
   const [profile, setProfile] = useState<UserProfile | null>(null)
@@ -29,86 +43,119 @@ export default function Profile() {
     Taro.navigateTo({ url: '/subpackages/profile-reports/settings/index' })
   }
 
+  const subtitle = [profile?.department, profile?.position].filter(Boolean).join(' · ') || '—'
+  const displayBadges = badges.slice(0, 3)
+
   return (
     <ScrollView scrollY className="page-profile">
-      {/* 学习资产 */}
-      <View className="section">
-        <Text className="section__title">学习资产</Text>
-        <Card>
-          <View className="profile-header">
-            <Text className="profile-header__name">{profile?.name ?? '—'}</Text>
-          </View>
-          <View className="profile-assets">
-            <View className="asset-item">
-              <Text className="asset-item__label">学习时长</Text>
-              <DataNumber value={totalMinutes} suffix=" 分钟" size="md" />
+      <View className="profile-header">
+        <Text className="profile-header__title">我的</Text>
+      </View>
+
+      <View className="profile-main">
+        {/* 深色用户卡 */}
+        <View className="profile-hero">
+          <View className="profile-hero__glow" />
+          <View className="profile-hero__top">
+            <View className="profile-hero__avatar-wrap">
+              <View className="profile-hero__avatar">
+                <Text className="profile-hero__avatar-icon">👤</Text>
+              </View>
             </View>
-            <View className="asset-item">
-              <Text className="asset-item__label">当前积分</Text>
-              <DataNumber value={points} suffix=" 积分" size="md" />
+            <View className="profile-hero__info">
+              <Text className="profile-hero__name">{profile?.name ?? '—'}</Text>
+              <Text className="profile-hero__subtitle">{subtitle}</Text>
             </View>
           </View>
-          <View className="profile-badges">
-            <Text className="profile-badges__title">勋章（可解锁更多内容）</Text>
-            <View className="profile-badges__list">
-              {badges.map((b) => (
-                <View key={b.id} className={`badge-dot ${b.unlocked ? 'badge-dot--unlocked' : ''}`}>
-                  <Text className="badge-dot__name">{b.name}</Text>
+          <View className="profile-hero__stats">
+            <View className="profile-hero__stat">
+              <Text className="profile-hero__stat-label">学习时长</Text>
+              <View className="profile-hero__stat-row">
+                <Text className="profile-hero__stat-num">{totalMinutes}</Text>
+                <Text className="profile-hero__stat-unit">分钟</Text>
+              </View>
+            </View>
+            <View className="profile-hero__stat">
+              <Text className="profile-hero__stat-label">当前积分</Text>
+              <View className="profile-hero__stat-row">
+                <Text className="profile-hero__stat-num">{points}</Text>
+                <Text className="profile-hero__stat-unit">分</Text>
+              </View>
+            </View>
+          </View>
+          <View className="profile-hero__badges">
+            <View className="profile-hero__badges-left">
+              <Text className="profile-hero__badges-title">专职勋章</Text>
+              <Text className="profile-hero__badges-hint">收集解锁高阶训练营</Text>
+            </View>
+            <View className="profile-hero__badges-list">
+              {displayBadges.map((b) => (
+                <View
+                  key={b.id}
+                  className={`profile-hero__badge ${b.unlocked ? 'profile-hero__badge--unlocked' : 'profile-hero__badge--locked'}`}
+                >
+                  <Text className="profile-hero__badge-icon">{b.unlocked ? '⭐' : '🔒'}</Text>
                 </View>
               ))}
             </View>
           </View>
-        </Card>
-      </View>
+        </View>
 
-      {/* 我的报告 */}
-      <View className="section">
-        <Text className="section__title">我的报告</Text>
-        <Card noPadding>
-          {reports.map((r) => (
-            <ListItem
-              key={r.id}
-              onClick={() => goToReport(r.id)}
-              right={<Text>›</Text>}
-            >
-              <View>
-                <Text>{r.title}</Text>
-                <Text className="list-item-date">{r.date}</Text>
+        {/* 三宫格 */}
+        <View className="profile-quick">
+          {QUICK_ACTIONS.map((a) => (
+            <Card key={a.id} className="profile-quick-item" onClick={() => {}}>
+              <View className="profile-quick-item__icon-wrap" style={{ background: a.iconBg }}>
+                {a.hasDot && <View className="profile-quick-item__dot" />}
+                <Text className="profile-quick-item__icon">{a.icon}</Text>
               </View>
-            </ListItem>
+              <Text className="profile-quick-item__label">{a.label}</Text>
+            </Card>
           ))}
-        </Card>
-      </View>
+        </View>
 
-      {/* 更多 */}
-      <View className="section">
-        <Text className="section__title">更多</Text>
-        <Card noPadding>
-          <ListItem onClick={() => {}} right={<Text>›</Text>}>
-            <Text>我的病例</Text>
-          </ListItem>
-          <ListItem onClick={() => {}} right={<Text>›</Text>}>
-            <Text>直播报名</Text>
-          </ListItem>
-          <ListItem onClick={() => {}} right={<Text>›</Text>}>
-            <Text>收藏</Text>
-          </ListItem>
-          <ListItem onClick={() => {}} right={<Text>›</Text>}>
-            <Text>浏览历史</Text>
-          </ListItem>
-          <ListItem onClick={goToSettings} right={<Text>›</Text>}>
-            <Text>个人资料</Text>
-          </ListItem>
-          <ListItem onClick={goToSettings} right={<Text>›</Text>}>
-            <Text>兴趣标签</Text>
-          </ListItem>
-          <ListItem onClick={goToSettings} right={<Text>›</Text>}>
-            <Text>隐私与协议</Text>
-          </ListItem>
-          <ListItem onClick={goToSettings} right={<Text>›</Text>}>
-            <Text>意见反馈</Text>
-          </ListItem>
-        </Card>
+        {/* 专属报告档案 */}
+        <View className="profile-section">
+          <Text className="profile-section__title">专属报告档案</Text>
+          <Card className="profile-reports" noPadding>
+            {reports.map((r) => (
+              <View
+                key={r.id}
+                className="profile-report-row"
+                onClick={() => goToReport(r.id)}
+              >
+                <View className="profile-report-row__left">
+                  <View className={`profile-report-row__pdf profile-report-row__pdf--${r.type}`}>PDF</View>
+                  <View>
+                    <Text className="profile-report-row__title">{r.title}</Text>
+                    <Text className="profile-report-row__date">{r.date}</Text>
+                  </View>
+                </View>
+                <Text className="profile-report-row__arrow">›</Text>
+              </View>
+            ))}
+          </Card>
+        </View>
+
+        {/* 设置列表 */}
+        <View className="profile-section profile-section--settings">
+          <View className="profile-settings">
+            {SETTINGS_ITEMS.map((item) => (
+              <View
+                key={item.id}
+                className="profile-settings-row"
+                onClick={goToSettings}
+              >
+                <Text className="profile-settings-row__label">{item.label}</Text>
+                <Text className="profile-settings-row__arrow">›</Text>
+              </View>
+            ))}
+          </View>
+        </View>
+        <View className="profile-bottom" />
+        <View className="profile-settings-link" onClick={goToSettings}>
+          <Text className="profile-settings-link__text">设置</Text>
+        </View>
       </View>
     </ScrollView>
   )

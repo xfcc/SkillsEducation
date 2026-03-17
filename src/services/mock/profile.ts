@@ -4,6 +4,8 @@ export const mockUserProfile: UserProfile = {
   id: 'u1',
   name: '医生用户',
   avatar: '',
+  department: '心血管内科',
+  position: '主治医师',
 }
 
 export const mockUserPoints: UserPoints = {

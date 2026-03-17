@@ -3,68 +3,78 @@ import Taro from '@tarojs/taro'
 import { Card } from '../../components'
 import './index.scss'
 
+const THEORY_CARDS = [
+  {
+    id: 'course',
+    icon: '📺',
+    iconBg: '#EFF6FF',
+    title: '学术课程',
+    count: '400+',
+    unit: '节',
+    desc: '由一线心内科专家系统编纂，打造从入门到精通的阶梯式成长路径。',
+    tags: ['# 标测基础', '# 房颤消融'],
+    url: '/subpackages/theory-course/course/index',
+  },
+  {
+    id: 'case',
+    icon: '📦',
+    iconBg: '#EEF2FF',
+    title: '病例学习',
+    count: '600+',
+    unit: '例',
+    desc: '深度收录各类心律失常真实临床病案，全方位复盘核心临床决策。',
+    tags: ['# 疑难心电图', '# 靶点定位'],
+    url: '/subpackages/theory-course/case/index',
+  },
+  {
+    id: 'literature',
+    icon: '📖',
+    iconBg: '#ECFDF5',
+    title: '文献解读',
+    count: '100+',
+    unit: '篇',
+    desc: '紧跟全球心血管领域前沿学术动态。',
+    tags: ['# ESC指南', '# 临床随访'],
+    url: '/subpackages/theory-course/literature/index',
+  },
+] as const
+
 export default function Theory() {
-  const goToGuidebook = () => Taro.navigateTo({ url: '/subpackages/theory-course/guidebook/index' })
-  const goToCourses = () => Taro.navigateTo({ url: '/subpackages/theory-course/course/index' })
-  const goToCamps = () => Taro.navigateTo({ url: '/subpackages/theory-course/camp/index' })
-  const goToCases = () => Taro.navigateTo({ url: '/subpackages/theory-course/case/index' })
-  const goToClass = () => Taro.navigateTo({ url: '/subpackages/theory-course/class/index' })
+  const goTo = (url: string) => () => Taro.navigateTo({ url })
 
   return (
     <ScrollView scrollY className="page-theory">
-      {/* 技能手册 */}
-      <View className="section">
-        <Text className="section__title">技能手册</Text>
-        <Card>
-          <View className="theory-entry" onClick={goToGuidebook}>
-            <Text className="theory-entry__label">心电图、血管穿刺等案头学习</Text>
-            <View className="theory-entry__arrow">›</View>
-          </View>
-        </Card>
+      <View className="theory-header">
+        <Text className="theory-header__title">理论库</Text>
+        <View className="theory-header__search" />
       </View>
 
-      {/* 课程中心 */}
-      <View className="section">
-        <Text className="section__title">课程中心</Text>
-        <Card>
-          <View className="theory-entry" onClick={goToCourses}>
-            <Text className="theory-entry__label">按病种与解剖分类</Text>
-            <View className="theory-entry__arrow">›</View>
-          </View>
-        </Card>
-      </View>
-
-      {/* iEP 训练营 */}
-      <View className="section">
-        <Text className="section__title">iEP 训练营</Text>
-        <Card>
-          <View className="theory-entry" onClick={goToCamps}>
-            <Text className="theory-entry__label">精选录播课与学习路径</Text>
-            <View className="theory-entry__arrow">›</View>
-          </View>
-        </Card>
-      </View>
-
-      {/* 病案库 */}
-      <View className="section">
-        <Text className="section__title">病案库</Text>
-        <Card>
-          <View className="theory-entry" onClick={goToCases}>
-            <Text className="theory-entry__label">按指征检索真实病例</Text>
-            <View className="theory-entry__arrow">›</View>
-          </View>
-        </Card>
-      </View>
-
-      {/* 我的班级 */}
-      <View className="section">
-        <Text className="section__title">我的班级</Text>
-        <Card>
-          <View className="theory-entry" onClick={goToClass}>
-            <Text className="theory-entry__label">研讨与文献带读</Text>
-            <View className="theory-entry__arrow">›</View>
-          </View>
-        </Card>
+      <View className="theory-main">
+        {THEORY_CARDS.map((card) => (
+          <Card key={card.id} className="theory-card" onClick={goTo(card.url)}>
+            <View className="theory-card__top">
+              <View className="theory-card__head">
+                <View className="theory-card__icon" style={{ background: card.iconBg }}>
+                  <Text className="theory-card__icon-text">{card.icon}</Text>
+                </View>
+                <Text className="theory-card__title">{card.title}</Text>
+              </View>
+              <View className="theory-card__count">
+                <Text className="theory-card__count-num">{card.count}</Text>
+                <Text className="theory-card__count-unit">{card.unit}</Text>
+              </View>
+            </View>
+            <Text className="theory-card__desc">{card.desc}</Text>
+            <View className="theory-card__foot">
+              <View className="theory-card__tags">
+                {card.tags.map((tag) => (
+                  <Text key={tag} className="theory-card__tag">{tag}</Text>
+                ))}
+              </View>
+              <View className="theory-card__arrow">›</View>
+            </View>
+          </Card>
+        ))}
       </View>
     </ScrollView>
   )

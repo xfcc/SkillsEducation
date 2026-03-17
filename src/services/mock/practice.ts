@@ -1,4 +1,4 @@
-import type { PracticeCamp, PracticeDay, QuizQuestion, LeaderboardEntry } from '../types'
+import type { PracticeCamp, PracticeDay, QuizQuestion, LeaderboardEntry, DailyQuiz, PracticeCounts } from '../types'
 
 export const mockCamps: PracticeCamp[] = [
   {
@@ -73,3 +73,23 @@ export const mockLeaderboard: LeaderboardEntry[] = [
   { rank: 2, userId: 'u2', name: '李医生', score: 95, completedAt: '2024-03-14' },
   { rank: 3, userId: 'u3', name: '王医生', score: 92, completedAt: '2024-03-13' },
 ]
+
+export const mockDailyQuiz: DailyQuiz = {
+  id: 'dq1',
+  dateLabel: '17 三月',
+  tags: ['每日一题', '室早标测决策'],
+  question: '在右室流出道 (RVOT) 室早的标测中，若激动标测最早激动点早于体表 QRS 波起点 30ms，且起搏标测呈 12/12 匹配，下一步最合理的决策是？',
+  options: [
+    { text: '立即放电消融', percent: 68, isCorrect: true },
+    { text: '继续寻找更早激动点', percent: 15 },
+    { text: '调整导管贴靠压力', percent: 12 },
+    { text: '我不知道', percent: 5 },
+  ],
+  participantCount: 1204,
+  commentCount: 12,
+}
+
+export const mockPracticeCounts: PracticeCounts = {
+  openCampsCount: 2,
+  joinedClassesCount: 3,
+}
