@@ -1,0 +1,89 @@
+@import '../../design-tokens.scss';
+
+.page-profile {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  padding-bottom: 120rpx;
+}
+
+.section {
+  margin-bottom: $spacing-xl;
+
+  &__title {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin-bottom: $spacing-sm;
+    display: block;
+  }
+}
+
+.profile-header {
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 1rpx solid $color-border-light;
+
+  &__name {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+  }
+}
+
+.profile-assets {
+  display: flex;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-lg;
+}
+
+.asset-item {
+  flex: 1;
+  padding: $spacing-md;
+  background: $color-bg-elevated;
+  border-radius: $radius-md;
+
+  &__label {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+    display: block;
+    margin-bottom: $spacing-xs;
+  }
+}
+
+.profile-badges {
+  &__title {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    display: block;
+    margin-bottom: $spacing-sm;
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+}
+
+.badge-dot {
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  background: $color-bg-muted;
+
+  &__name {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+  }
+  &--unlocked {
+    background: rgba($color-accent, 0.12);
+    .badge-dot__name {
+      color: $color-accent;
+    }
+  }
+}
+
+.list-item-date {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  display: block;
+  margin-top: 4rpx;
+}

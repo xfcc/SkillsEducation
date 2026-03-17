@@ -1,0 +1,27 @@
+@import '../../../design-tokens.scss';
+
+.page-settings {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background: $color-bg-page;
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    display: block;
+    margin-bottom: $spacing-lg;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+  &__item {
+    font-size: $font-size-base;
+    color: $color-text-primary;
+    padding: $spacing-md;
+    background: $color-bg-card;
+    border-radius: $radius-md;
+  }
+}

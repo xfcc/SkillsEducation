@@ -1,0 +1,28 @@
+@import '../../../design-tokens.scss';
+
+.page-utility-aifv {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background: $color-bg-page;
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    display: block;
+    margin-bottom: $spacing-md;
+  }
+  &__desc {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    display: block;
+    margin-bottom: $spacing-lg;
+  }
+  &__btn {
+    padding: $spacing-md $spacing-lg;
+    background: $color-accent;
+    color: #fff;
+    border-radius: $radius-md;
+    text-align: center;
+  }
+}

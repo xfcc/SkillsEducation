@@ -1,0 +1,47 @@
+@import '../../../design-tokens.scss';
+
+.page-leaderboard {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background: $color-bg-page;
+}
+
+.page-leaderboard__list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+
+  &__rank {
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 50%;
+    background: $color-bg-muted;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+  &__rank-num {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-text-secondary;
+  }
+  &__main {
+    flex: 1;
+  }
+  &__name {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+    display: block;
+  }
+  &__time {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+  }
+}

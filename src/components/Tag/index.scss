@@ -1,0 +1,25 @@
+@import '../../design-tokens.scss';
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: $tag-padding;
+  border-radius: $tag-radius;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+
+  &--default {
+    background: $tag-bg;
+    color: $tag-color;
+  }
+
+  &--primary {
+    background: rgba($color-accent, 0.12);
+    color: $color-accent;
+  }
+
+  &--success {
+    background: rgba($color-success, 0.12);
+    color: $color-success;
+  }
+}

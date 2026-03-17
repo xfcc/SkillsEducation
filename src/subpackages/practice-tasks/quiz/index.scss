@@ -1,0 +1,11 @@
+@import '../../../design-tokens.scss';
+
+.page-quiz {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background: $color-bg-page;
+}
+
+.page-quiz__inner {
+  padding-bottom: 80rpx;
+}

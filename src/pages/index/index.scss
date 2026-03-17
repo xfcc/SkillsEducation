@@ -1,0 +1,118 @@
+@import '../../design-tokens.scss';
+
+.page-index {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  padding-bottom: 120rpx;
+}
+
+.section {
+  margin-bottom: $spacing-xl;
+
+  &__title {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin-bottom: $spacing-sm;
+    display: block;
+  }
+}
+
+.feed-carousel {
+  height: 160rpx;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background: $color-bg-elevated;
+
+  &__item {
+    height: 100%;
+    padding: $spacing-lg;
+    display: flex;
+    align-items: center;
+  }
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+  }
+}
+
+.engine-actions {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.engine-item {
+  position: relative;
+  padding: $spacing-md 0;
+  border-bottom: 1rpx solid $color-border-light;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &__label {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+    display: block;
+  }
+
+  &__desc {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+    margin-top: 4rpx;
+    display: block;
+  }
+
+  &__arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $color-text-tertiary;
+    font-size: $font-size-lg;
+  }
+}
+
+.radar-empty {
+  padding: $spacing-2xl;
+  text-align: center;
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+}
+
+.radar-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.radar-item {
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-border-light;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__time {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+  }
+
+  &__title {
+    font-size: $font-size-base;
+    color: $color-text-primary;
+    font-weight: $font-weight-medium;
+    line-height: 1.4;
+  }
+}

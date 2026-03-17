@@ -1,0 +1,43 @@
+@import '../../design-tokens.scss';
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: $button-height;
+  padding: 0 $spacing-lg;
+  border-radius: $button-radius;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  border: none;
+
+  &--block {
+    display: flex;
+    width: 100%;
+  }
+
+  &--primary {
+    background: $button-primary-bg;
+    color: $button-primary-color;
+  }
+
+  &--default {
+    background: $color-bg-muted;
+    color: $color-text-primary;
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $color-accent;
+  }
+
+  &--sm {
+    height: 64rpx;
+    font-size: $font-size-sm;
+  }
+
+  &--lg {
+    height: 96rpx;
+    font-size: $font-size-md;
+  }
+}

@@ -1,0 +1,27 @@
+@import '../../design-tokens.scss';
+
+.quiz-question {
+  margin-bottom: $spacing-xl;
+
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+    display: block;
+    margin-bottom: $spacing-md;
+    line-height: 1.5;
+  }
+
+  &__option {
+    padding: $spacing-md $spacing-lg;
+    margin-bottom: $spacing-sm;
+    background: $color-bg-elevated;
+    border-radius: $radius-md;
+    border: 2rpx solid transparent;
+
+    &--selected {
+      border-color: $color-accent;
+      background: rgba($color-accent, 0.06);
+    }
+  }
+}

@@ -1,0 +1,80 @@
+// SkillsEducation Design Tokens — 克制、数据高亮、容器化布局
+
+// ----- 色彩 -----
+$color-primary: #1a1a2e;
+$color-primary-light: #2d2d44;
+$color-accent: #0d7377;
+$color-accent-hover: #0a5c5f;
+
+$color-bg-page: #f5f5f7;
+$color-bg-card: #ffffff;
+$color-bg-elevated: #fafafa;
+$color-bg-muted: #e8e8ed;
+
+$color-border: #e0e0e5;
+$color-border-light: #ebebf0;
+
+$color-text-primary: #1a1a2e;
+$color-text-secondary: #6e6e73;
+$color-text-tertiary: #8e8e93;
+$color-text-inverse: #ffffff;
+
+$color-data-highlight: #1a1a2e;
+$color-success: #34c759;
+$color-warning: #ff9500;
+$color-error: #ff3b30;
+
+// ----- 字体 -----
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+$font-mono: "SF Mono", "Monaco", "Consolas", monospace;
+
+$font-size-xs: 22rpx;
+$font-size-sm: 26rpx;
+$font-size-base: 28rpx;
+$font-size-md: 30rpx;
+$font-size-lg: 34rpx;
+$font-size-xl: 40rpx;
+$font-size-data: 48rpx;
+$font-size-hero: 56rpx;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// 无衬线数字（tabular-nums 在样式中单独设置）
+%tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+// ----- 间距与圆角 -----
+$spacing-xs: 8rpx;
+$spacing-sm: 16rpx;
+$spacing-md: 24rpx;
+$spacing-lg: 32rpx;
+$spacing-xl: 48rpx;
+$spacing-2xl: 64rpx;
+
+$radius-sm: 8rpx;
+$radius-md: 12rpx;
+$radius-lg: 16rpx;
+$radius-xl: 24rpx;
+
+// ----- 组件 -----
+$card-bg: $color-bg-card;
+$card-padding: $spacing-lg;
+$card-radius: $radius-lg;
+$card-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+
+$list-item-padding: $spacing-md $spacing-lg;
+$list-item-border: 1rpx solid $color-border-light;
+
+$button-primary-bg: $color-accent;
+$button-primary-color: $color-text-inverse;
+$button-radius: $radius-md;
+$button-height: 80rpx;
+
+$tag-bg: $color-bg-muted;
+$tag-color: $color-text-secondary;
+$tag-radius: $radius-sm;
+$tag-padding: $spacing-xs $spacing-sm;

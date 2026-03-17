@@ -1,0 +1,48 @@
+@import '../../design-tokens.scss';
+
+.data-number {
+  font-variant-numeric: tabular-nums;
+  color: $color-data-highlight;
+
+  &__value {
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__suffix {
+    margin-left: 2rpx;
+    color: $color-text-secondary;
+    font-weight: $font-weight-regular;
+  }
+
+  &--bold .data-number__value {
+    font-weight: $font-weight-bold;
+  }
+
+  &--sm {
+    font-size: $font-size-lg;
+    .data-number__suffix {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &--md {
+    font-size: $font-size-data;
+    .data-number__suffix {
+      font-size: $font-size-base;
+    }
+  }
+
+  &--lg {
+    font-size: $font-size-hero;
+    .data-number__suffix {
+      font-size: $font-size-md;
+    }
+  }
+
+  &--hero {
+    font-size: $font-size-hero;
+    .data-number__suffix {
+      font-size: $font-size-lg;
+    }
+  }
+}

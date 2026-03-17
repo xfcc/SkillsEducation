@@ -1,0 +1,41 @@
+@import '../../../design-tokens.scss';
+
+.page-camp {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background: $color-bg-page;
+}
+
+.page-camp__list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.camp-card {
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-xs;
+  }
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+  }
+  &__desc {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin-bottom: $spacing-sm;
+    display: block;
+  }
+  &__meta {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+    margin-bottom: $spacing-sm;
+  }
+  &__btn {
+    margin-top: $spacing-sm;
+  }
+}

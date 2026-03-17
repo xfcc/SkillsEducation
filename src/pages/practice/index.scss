@@ -1,0 +1,53 @@
+@import '../../design-tokens.scss';
+
+.page-practice {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  padding-bottom: 120rpx;
+}
+
+.section {
+  margin-bottom: $spacing-xl;
+
+  &__title {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin-bottom: $spacing-sm;
+    display: block;
+  }
+}
+
+.practice-entry {
+  display: flex;
+  align-items: center;
+  padding: $spacing-md 0;
+
+  &__main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4rpx;
+  }
+
+  &__label {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+  }
+
+  &__desc {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+  }
+
+  &__arrow {
+    color: $color-text-tertiary;
+    font-size: $font-size-lg;
+  }
+}
+
+.practice-entry--disabled {
+  opacity: 0.55;
+}

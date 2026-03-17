@@ -1,0 +1,27 @@
+@import '../../../design-tokens.scss';
+
+.page-class {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background: $color-bg-page;
+}
+
+.page-class__list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.class-card {
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+    display: block;
+    margin-bottom: $spacing-xs;
+  }
+  &__meta {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+  }
+}

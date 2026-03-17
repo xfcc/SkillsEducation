@@ -1,0 +1,51 @@
+@import '../../../design-tokens.scss';
+
+.page-task {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background: $color-bg-page;
+}
+
+.page-task__days {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.day-card {
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1rpx solid $color-border-light;
+  }
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+  }
+  &__tasks {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+}
+
+.task-item {
+  padding: $spacing-md;
+  background: $color-bg-elevated;
+  border-radius: $radius-md;
+
+  &__title {
+    font-size: $font-size-sm;
+    color: $color-text-primary;
+    display: block;
+  }
+  &__meta {
+    display: flex;
+    gap: $spacing-xs;
+    margin-top: $spacing-xs;
+  }
+}

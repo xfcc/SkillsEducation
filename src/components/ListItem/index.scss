@@ -1,0 +1,40 @@
+@import '../../design-tokens.scss';
+
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: $list-item-padding;
+  background: $color-bg-card;
+
+  &--border::after {
+    content: '';
+    position: absolute;
+    left: $spacing-lg;
+    right: $spacing-lg;
+    bottom: 0;
+    border-bottom: $list-item-border;
+  }
+
+  &__left {
+    margin-right: $spacing-md;
+    flex-shrink: 0;
+  }
+
+  &__main {
+    flex: 1;
+    min-width: 0;
+    font-size: $font-size-base;
+    color: $color-text-primary;
+  }
+
+  &__right {
+    margin-left: $spacing-sm;
+    flex-shrink: 0;
+    color: $color-text-tertiary;
+    font-size: $font-size-sm;
+  }
+}
+
+.list-item {
+  position: relative;
+}

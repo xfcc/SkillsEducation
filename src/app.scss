@@ -1,0 +1,22 @@
+@import './design-tokens.scss';
+
+page {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  color: $color-text-primary;
+  background-color: $color-bg-page;
+  box-sizing: border-box;
+}
+
+// 避免使用通配选择器 `*`（部分微信开发者工具会报 WXSS 编译错误）
+view,
+text,
+scroll-view,
+swiper,
+swiper-item,
+button,
+image,
+input,
+textarea {
+  box-sizing: border-box;
+}

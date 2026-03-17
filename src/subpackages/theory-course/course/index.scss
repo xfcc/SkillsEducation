@@ -1,0 +1,36 @@
+@import '../../../design-tokens.scss';
+
+.page-course {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background: $color-bg-page;
+}
+
+.page-course__list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.course-card {
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-xs;
+  }
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+  }
+  &__meta {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+    display: block;
+    margin-bottom: $spacing-sm;
+  }
+  &__unlock {
+    margin-top: $spacing-sm;
+  }
+}

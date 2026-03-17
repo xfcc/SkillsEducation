@@ -1,0 +1,43 @@
+{
+  "name": "skills-education",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SkillsEducation 专业教育通用架构 - 微信小程序",
+  "template": "react-ts",
+  "scripts": {
+    "build:weapp": "taro build --type weapp",
+    "dev:weapp": "npm run build:weapp -- --watch",
+    "build:h5": "taro build --type h5",
+    "dev:h5": "npm run build:h5 -- --watch"
+  },
+  "browserslist": [
+    "last 3 versions",
+    "Android >= 4.1",
+    "ios >= 8"
+  ],
+  "author": "",
+  "dependencies": {
+    "@babel/runtime": "^7.24.0",
+    "@tarojs/components": "3.6.24",
+    "@tarojs/helper": "3.6.24",
+    "@tarojs/plugin-framework-react": "3.6.24",
+    "@tarojs/plugin-platform-weapp": "3.6.24",
+    "@tarojs/react": "3.6.24",
+    "@tarojs/runtime": "3.6.24",
+    "@tarojs/taro": "3.6.24",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@tarojs/cli": "3.6.24",
+    "@tarojs/webpack5-runner": "3.6.24",
+    "@types/react": "18.2.0",
+    "babel-preset-taro": "3.6.24",
+    "eslint": "^8.57.0",
+    "sass": "^1.69.0",
+    "typescript": "^5.3.0",
+    "webpack": "5.78.0"
+  }
+}

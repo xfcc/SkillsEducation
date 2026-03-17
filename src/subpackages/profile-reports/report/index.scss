@@ -1,0 +1,21 @@
+@import '../../../design-tokens.scss';
+
+.page-report {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background: $color-bg-page;
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    display: block;
+    margin-bottom: $spacing-md;
+  }
+  &__id, &__placeholder {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    display: block;
+    margin-bottom: $spacing-sm;
+  }
+}

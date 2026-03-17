@@ -1,0 +1,27 @@
+@import '../../../design-tokens.scss';
+
+.page-guidebook {
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background: $color-bg-page;
+}
+
+.page-guidebook__list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.guidebook-card {
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+    display: block;
+    margin-bottom: $spacing-xs;
+  }
+  &__desc {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+  }
+}

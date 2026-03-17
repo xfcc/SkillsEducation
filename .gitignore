@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment and secrets (never commit)
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.uat
+.env.pre
+
+# WeChat dev tool: per-developer overrides (often contains local appid)
+project.private.config.json
+
+# Cache and temp
+.swc/
+.temp/
+.cache/
+*.tsbuildinfo
+
+# Logs and debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE (optional; uncomment if you want to ignore)
+# .idea/
+# .vscode/
+# *.sublime-*
+
+# Coverage and test output
+coverage/
+.nyc_output/
+
+# Lock file (optional: many teams commit package-lock.json for reproducible installs)
+# package-lock.json

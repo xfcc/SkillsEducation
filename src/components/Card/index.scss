@@ -1,0 +1,12 @@
+@import '../../design-tokens.scss';
+
+.card {
+  background: $card-bg;
+  border-radius: $card-radius;
+  padding: $card-padding;
+  box-shadow: $card-shadow;
+
+  &--no-padding {
+    padding: 0;
+  }
+}
