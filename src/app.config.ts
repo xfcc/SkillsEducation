@@ -1,4 +1,6 @@
 export default defineAppConfig({
+  // 启用组件按需注入：仅注入当前页面所需组件，降低启动耗时（基础库 2.11.1+）
+  lazyCodeLoading: 'requiredComponents',
   pages: [
     'pages/index/index',
     'pages/theory/index',
@@ -17,7 +19,7 @@ export default defineAppConfig({
     backgroundColor: '#ffffff',
     borderStyle: 'black',
     list: [
-      { pagePath: 'pages/index/index', text: '枢纽', iconPath: 'assets/tab-home.png', selectedIconPath: 'assets/tab-home-active.png' },
+      { pagePath: 'pages/index/index', text: '首页', iconPath: 'assets/tab-home.png', selectedIconPath: 'assets/tab-home-active.png' },
       { pagePath: 'pages/theory/index', text: '理论', iconPath: 'assets/tab-theory.png', selectedIconPath: 'assets/tab-theory-active.png' },
       { pagePath: 'pages/practice/index', text: '演练', iconPath: 'assets/tab-practice.png', selectedIconPath: 'assets/tab-practice-active.png' },
       { pagePath: 'pages/profile/index', text: '我的', iconPath: 'assets/tab-profile.png', selectedIconPath: 'assets/tab-profile-active.png' },

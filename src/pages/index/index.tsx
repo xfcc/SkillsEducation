@@ -13,12 +13,16 @@ export default function Index() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    Promise.all([getHeroList(), getClinicalFrontier(), getLiveNow()]).then(([h, f, l]) => {
-      setHeroList(h)
-      setFrontierList(f)
-      setLiveNow(l ?? null)
-      setLoading(false)
-    })
+    Promise.all([getHeroList(), getClinicalFrontier(), getLiveNow()])
+      .then(([h, f, l]) => {
+        setHeroList(Array.isArray(h) && h.length > 0 ? h : [])
+        setFrontierList(Array.isArray(f) && f.length > 0 ? f : [])
+        setLiveNow(l ?? null)
+      })
+      .catch(() => {
+        // 真机或网络异常时避免整页空白，保留空列表由下方占位展示
+      })
+      .finally(() => setLoading(false))
   }, [])
 
   const goToHero = (item: HeroItem) => {
@@ -51,17 +55,17 @@ export default function Index() {
       </View>
 
       <ScrollView scrollY className="index-scroll" enhanced showScrollbar={false}>
-        {/* Hero 轮播 */}
-        {heroList.length > 0 && (
-          <Swiper
-            className="index-hero-swiper"
-            autoplay
-            circular
-            indicatorDots
-            indicatorColor="rgba(255,255,255,0.4)"
-            indicatorActiveColor="#fff"
-          >
-            {heroList.map((hero, i) => (
+        {/* Hero 轮播：无数据时显示占位，避免真机空白 */}
+        <Swiper
+          className="index-hero-swiper"
+          autoplay={heroList.length > 1}
+          circular={heroList.length > 1}
+          indicatorDots={heroList.length > 0}
+          indicatorColor="rgba(255,255,255,0.4)"
+          indicatorActiveColor="#fff"
+        >
+          {heroList.length > 0 ? (
+            heroList.map((hero) => (
               <SwiperItem key={hero.id}>
                 <View className="index-hero" onClick={() => goToHero(hero)}>
                   <View className="index-hero__gradient" />
@@ -72,9 +76,20 @@ export default function Index() {
                   </View>
                 </View>
               </SwiperItem>
-            ))}
-          </Swiper>
-        )}
+            ))
+          ) : (
+            <SwiperItem>
+              <View className="index-hero">
+                <View className="index-hero__gradient" />
+                <View className="index-hero__content">
+                  <Text className="index-hero__badge">精选</Text>
+                  <Text className="index-hero__title">心技教育</Text>
+                  <Text className="index-hero__meta">加载中…</Text>
+                </View>
+              </View>
+            </SwiperItem>
+          )}
+        </Swiper>
 
         {/* 临床前沿 */}
         <View className="index-section">
@@ -84,7 +99,7 @@ export default function Index() {
           </View>
           {loading ? (
             <View className="index-empty"><Text>加载中…</Text></View>
-          ) : (
+          ) : frontierList.length > 0 ? (
             <View className="index-frontier">
               {frontierList.map((item) => (
                 <Card key={item.id} className="index-frontier-card">
@@ -99,6 +114,8 @@ export default function Index() {
                 </Card>
               ))}
             </View>
+          ) : (
+            <View className="index-empty"><Text>暂无内容</Text></View>
           )}
         </View>
         <View className="index-scroll-bottom" />

@@ -1,4 +1,4 @@
-import type { UserProfile, UserPoints, Badge, LearningStats, ProfileReport } from '../types'
+import type { UserProfile, LearningStats, ProfileReport } from '../types'
 
 export const mockUserProfile: UserProfile = {
   id: 'u1',
@@ -7,16 +7,6 @@ export const mockUserProfile: UserProfile = {
   department: '心血管内科',
   position: '主治医师',
 }
-
-export const mockUserPoints: UserPoints = {
-  points: 641,
-}
-
-export const mockBadges: Badge[] = [
-  { id: 'b1', name: '入门学徒', unlocked: true },
-  { id: 'b2', name: '室上速通关', unlocked: true },
-  { id: 'b3', name: '房颤进阶', unlocked: false },
-]
 
 export const mockLearningStats: LearningStats = {
   totalMinutes: 1280,

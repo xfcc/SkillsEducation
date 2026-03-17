@@ -1,38 +1,3 @@
-// Learning map
-export interface LearningMapNode {
-  id: string
-  title: string
-  order: number
-  completed: boolean
-  isCurrent: boolean
-}
-
-export interface LearningMap {
-  nodes: LearningMapNode[]
-  currentId: string | null
-}
-
-// Radar feed (literature + live)
-export type FeedItemType = 'literature' | 'live'
-
-export interface FeedItem {
-  id: string
-  type: FeedItemType
-  title: string
-  cover?: string
-  time: string
-  link?: string
-  liveId?: string
-}
-
-/** 首页轮播：热门精选与最新上架 */
-export interface CarouselItem {
-  id: string
-  title: string
-  cover?: string
-  link?: string
-}
-
 /** 首页单 Hero：核心训练营 */
 export interface HeroItem {
   id: string
@@ -70,10 +35,6 @@ export interface UserProfile {
   avatar?: string
   department?: string
   position?: string
-}
-
-export interface UserPoints {
-  points: number
 }
 
 export interface Badge {

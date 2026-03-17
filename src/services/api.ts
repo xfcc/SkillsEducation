@@ -1,6 +1,4 @@
 import type {
-  LearningMap,
-  FeedItem,
   TheoryCategory,
   TheoryCourse,
   TheoryCase,
@@ -10,44 +8,20 @@ import type {
   QuizQuestion,
   LeaderboardEntry,
   UserProfile,
-  UserPoints,
-  Badge,
   LearningStats,
   ProfileReport,
   Guidebook,
-  CarouselItem,
   HeroItem,
   ClinicalFrontierItem,
   LiveNowItem,
   DailyQuiz,
   PracticeCounts,
 } from './types'
-import { mockLearningMap } from './mock/learningMap'
-import { mockRadarFeed, mockCarousel, mockHero, mockHeroList, mockClinicalFrontier, mockLiveNow } from './mock/feed'
+import { mockHeroList, mockClinicalFrontier, mockLiveNow } from './mock/feed'
 import { mockGuidebooks } from './mock/guidebook'
 import { mockCategories, mockCourses, mockCases, mockClasses } from './mock/theory'
 import { mockCamps, mockCampDays, mockQuizQuestions, mockLeaderboard, mockDailyQuiz, mockPracticeCounts } from './mock/practice'
-import { mockUserProfile, mockUserPoints, mockBadges, mockLearningStats, mockReports } from './mock/profile'
-
-export async function getLearningMap(): Promise<LearningMap> {
-  await delay(200)
-  return mockLearningMap
-}
-
-export async function getRadarFeed(): Promise<FeedItem[]> {
-  await delay(150)
-  return mockRadarFeed
-}
-
-export async function getCarousel(): Promise<CarouselItem[]> {
-  await delay(100)
-  return mockCarousel
-}
-
-export async function getHero(): Promise<HeroItem> {
-  await delay(100)
-  return mockHero
-}
+import { mockUserProfile, mockLearningStats, mockReports } from './mock/profile'
 
 export async function getHeroList(): Promise<HeroItem[]> {
   await delay(100)
@@ -128,16 +102,6 @@ export async function getLeaderboard(_campId?: string): Promise<LeaderboardEntry
 export async function getUserProfile(): Promise<UserProfile> {
   await delay(100)
   return mockUserProfile
-}
-
-export async function getUserPoints(): Promise<UserPoints> {
-  await delay(100)
-  return mockUserPoints
-}
-
-export async function getBadges(): Promise<Badge[]> {
-  await delay(100)
-  return mockBadges
 }
 
 export async function getLearningStats(): Promise<LearningStats> {

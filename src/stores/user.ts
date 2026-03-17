@@ -13,14 +13,11 @@ interface UserState {
   unlockedCourseIds: Set<string>
   /** 已解锁的训练营 ID */
   unlockedCampIds: Set<string>
-  /** 学习地图当前节点 ID */
-  learningMapCurrentId: string | null
   setPoints: (points: number) => void
   addPoints: (delta: number) => void
   setBadges: (badges: BadgeState[]) => void
   unlockCourse: (id: string) => void
   unlockCamp: (id: string) => void
-  setLearningMapCurrent: (id: string | null) => void
   isCourseUnlocked: (id: string) => boolean
   isCampUnlocked: (id: string) => boolean
   /** 消耗积分并解锁（模拟） */
@@ -31,7 +28,6 @@ interface UserState {
 const DEFAULT_POINTS = 641
 const DEFAULT_UNLOCKED_COURSES = ['c1', 'c2', 'c3']
 const DEFAULT_UNLOCKED_CAMPS = ['camp-1']
-const DEFAULT_LEARNING_MAP_CURRENT = 'node-03'
 
 export const useUserStore = create<UserState>((set, get) => ({
   points: DEFAULT_POINTS,
@@ -42,7 +38,6 @@ export const useUserStore = create<UserState>((set, get) => ({
   ],
   unlockedCourseIds: new Set(DEFAULT_UNLOCKED_COURSES),
   unlockedCampIds: new Set(DEFAULT_UNLOCKED_CAMPS),
-  learningMapCurrentId: DEFAULT_LEARNING_MAP_CURRENT,
 
   setPoints: (points) => set({ points }),
   addPoints: (delta) => set((s) => ({ points: Math.max(0, s.points + delta) })),
@@ -55,7 +50,6 @@ export const useUserStore = create<UserState>((set, get) => ({
     set((s) => ({
       unlockedCampIds: new Set([...s.unlockedCampIds, id]),
     })),
-  setLearningMapCurrent: (id) => set({ learningMapCurrentId: id }),
 
   isCourseUnlocked: (id) => get().unlockedCourseIds.has(id),
   isCampUnlocked: (id) => get().unlockedCampIds.has(id),
