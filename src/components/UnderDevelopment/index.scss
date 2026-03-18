@@ -1,0 +1,50 @@
+.underdev {
+  padding: 24px 18px;
+}
+
+.underdev__card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.underdev__title {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.underdev__subtitle {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #64748b;
+}
+
+.underdev__meta {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.underdev__meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.underdev__meta-key {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.underdev__meta-val {
+  font-size: 12px;
+  color: #0f172a;
+  font-weight: 600;
+}
+

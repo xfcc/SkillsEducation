@@ -29,6 +29,28 @@ export default function Index() {
     if (item?.link) Taro.navigateTo({ url: item.link })
   }
 
+  const goToNotifications = () => {
+    Taro.navigateTo({ url: '/subpackages/secondary/home-notifications/index?from=home' })
+  }
+
+  const goToSearch = () => {
+    Taro.navigateTo({ url: '/subpackages/secondary/home-search/index' })
+  }
+
+  const goToFrontierFilter = () => {
+    Taro.navigateTo({ url: '/subpackages/secondary/home-frontier-filter/index' })
+  }
+
+  const goToFrontierDetail = (item: ClinicalFrontierItem) => {
+    const title = encodeURIComponent(item.title ?? '')
+    Taro.navigateTo({ url: `/subpackages/secondary/home-frontier-detail/index?id=${item.id}&title=${title}` })
+  }
+
+  const goToLive = () => {
+    const title = encodeURIComponent(liveNow?.title ?? '')
+    Taro.navigateTo({ url: `/subpackages/secondary/home-live/index?title=${title}` })
+  }
+
   const isPrimaryCategory = (c: ClinicalFrontierItem['category']) =>
     c === '经典病例' || c === '病例复盘'
 
@@ -36,7 +58,7 @@ export default function Index() {
     <View className="page-index">
       {/* 顶栏：搜索 + 通知 */}
       <View className="index-header">
-        <View className="index-header__search">
+        <View className="index-header__search" onClick={goToSearch}>
           <Input
             className="index-header__input"
             placeholder="搜索文献、病例或术式…"
@@ -44,7 +66,7 @@ export default function Index() {
             disabled
           />
         </View>
-        <View className="index-header__bell">
+        <View className="index-header__bell" onClick={goToNotifications}>
           <View className="index-header__bell-dot" />
           <Image
             className="index-header__bell-icon"
@@ -95,14 +117,14 @@ export default function Index() {
         <View className="index-section">
           <View className="index-section__head">
             <Text className="index-section__title">临床前沿</Text>
-            <Text className="index-section__filter">筛选</Text>
+            <Text className="index-section__filter" onClick={goToFrontierFilter}>筛选</Text>
           </View>
           {loading ? (
             <View className="index-empty"><Text>加载中…</Text></View>
           ) : frontierList.length > 0 ? (
             <View className="index-frontier">
               {frontierList.map((item) => (
-                <Card key={item.id} className="index-frontier-card">
+                <Card key={item.id} className="index-frontier-card" onClick={() => goToFrontierDetail(item)}>
                   <View className="index-frontier-card__head">
                     <Tag type={isPrimaryCategory(item.category) ? 'primary' : 'default'}>
                       {item.category}
@@ -125,7 +147,7 @@ export default function Index() {
       {liveNow && (
         <View
           className="index-live-float"
-          onClick={() => {}}
+          onClick={goToLive}
         >
           <View className="index-live-float__dot-wrap">
             <View className="index-live-float__ping" />

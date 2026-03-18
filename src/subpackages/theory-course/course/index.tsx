@@ -28,13 +28,18 @@ export default function CourseList() {
     }
   }
 
+  const goToDetail = (c: TheoryCourse) => {
+    const title = encodeURIComponent(c.title ?? '')
+    Taro.navigateTo({ url: `/subpackages/secondary/course-detail/index?id=${c.id}&title=${title}` })
+  }
+
   return (
     <ScrollView scrollY className="page-course">
       <View className="page-course__list">
         {courses.map((c) => {
           const unlocked = isCourseUnlocked(c.id) || !c.locked
           return (
-            <Card key={c.id} className="course-card">
+            <Card key={c.id} className="course-card" onClick={() => goToDetail(c)}>
               <View className="course-card__row">
                 <Text className="course-card__title">{c.title}</Text>
                 <Tag type={unlocked ? 'primary' : 'default'}>{unlocked ? `进度 ${c.progress}%` : '已锁定'}</Tag>

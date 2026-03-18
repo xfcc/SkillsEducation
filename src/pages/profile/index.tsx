@@ -8,17 +8,17 @@ import type { UserProfile, ProfileReport } from '../../services/types'
 import './index.scss'
 
 const QUICK_ACTIONS = [
-  { id: 'cases', icon: '📄', iconBg: '#EFF6FF', label: '我的病例', url: '', hasDot: false },
-  { id: 'live', icon: '📺', iconBg: '#FEF2F2', label: '直播报名', url: '', hasDot: true },
-  { id: 'favorite', icon: '📑', iconBg: '#FFFBEB', label: '内容收藏', url: '', hasDot: false },
+  { id: 'cases', icon: '📄', iconBg: '#EFF6FF', label: '我的病例', url: '/subpackages/secondary/profile-my-cases/index', hasDot: false },
+  { id: 'live', icon: '📺', iconBg: '#FEF2F2', label: '直播报名', url: '/subpackages/secondary/profile-live-signup/index', hasDot: true },
+  { id: 'favorite', icon: '📑', iconBg: '#FFFBEB', label: '内容收藏', url: '/subpackages/secondary/profile-favorites/index', hasDot: false },
 ] as const
 
 const SETTINGS_ITEMS = [
-  { id: 'profile', label: '个人资料' },
-  { id: 'tags', label: '兴趣标签' },
-  { id: 'history', label: '浏览历史' },
-  { id: 'feedback', label: '意见反馈' },
-  { id: 'privacy', label: '隐私与协议' },
+  { id: 'profile', label: '个人资料', url: '/subpackages/secondary/profile-basic/index' },
+  { id: 'tags', label: '兴趣标签', url: '/subpackages/secondary/profile-tags/index' },
+  { id: 'history', label: '浏览历史', url: '/subpackages/secondary/profile-history/index' },
+  { id: 'feedback', label: '意见反馈', url: '/subpackages/secondary/profile-feedback/index' },
+  { id: 'privacy', label: '隐私与协议', url: '/subpackages/secondary/profile-privacy/index' },
 ] as const
 
 export default function Profile() {
@@ -41,6 +41,9 @@ export default function Profile() {
   }
   const goToSettings = () => {
     Taro.navigateTo({ url: '/subpackages/profile-reports/settings/index' })
+  }
+  const goTo = (url: string) => () => {
+    if (url) Taro.navigateTo({ url })
   }
 
   const subtitle = [profile?.department, profile?.position].filter(Boolean).join(' · ') || '—'
@@ -104,7 +107,7 @@ export default function Profile() {
         {/* 三宫格 */}
         <View className="profile-quick">
           {QUICK_ACTIONS.map((a) => (
-            <Card key={a.id} className="profile-quick-item" onClick={() => {}}>
+            <Card key={a.id} className="profile-quick-item" onClick={goTo(a.url)}>
               <View className="profile-quick-item__icon-wrap" style={{ background: a.iconBg }}>
                 {a.hasDot && <View className="profile-quick-item__dot" />}
                 <Text className="profile-quick-item__icon">{a.icon}</Text>
@@ -144,7 +147,7 @@ export default function Profile() {
               <View
                 key={item.id}
                 className="profile-settings-row"
-                onClick={goToSettings}
+                onClick={goTo(item.url)}
               >
                 <Text className="profile-settings-row__label">{item.label}</Text>
                 <Text className="profile-settings-row__arrow">›</Text>

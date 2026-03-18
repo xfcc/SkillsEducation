@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build:h5",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+

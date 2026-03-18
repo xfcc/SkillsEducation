@@ -18,6 +18,15 @@ export default function TaskPage() {
     Taro.navigateTo({ url: `/subpackages/practice-tasks/quiz/index?taskId=${taskId}` })
   }
 
+  const goToTaskDetail = (t: PracticeTask) => {
+    if (t.type === 'simulator') {
+      Taro.navigateTo({ url: `/subpackages/secondary/simulator/index?taskId=${t.id}&from=camp` })
+      return
+    }
+    const title = encodeURIComponent(t.title ?? '')
+    Taro.navigateTo({ url: `/subpackages/secondary/home-frontier-detail/index?id=${t.id}&title=${title}` })
+  }
+
   return (
     <ScrollView scrollY className="page-task">
       <View className="page-task__days">
@@ -32,7 +41,7 @@ export default function TaskPage() {
                 <View
                   key={t.id}
                   className="task-item"
-                  onClick={() => t.type === 'quiz' && goToQuiz(t.id)}
+                  onClick={() => (t.type === 'quiz' ? goToQuiz(t.id) : goToTaskDetail(t))}
                 >
                   <Text className="task-item__title">{t.title}</Text>
                   <View className="task-item__meta">

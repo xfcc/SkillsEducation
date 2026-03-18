@@ -7,7 +7,7 @@ import type { PracticeCounts, DailyQuiz } from '../../services/types'
 import './index.scss'
 
 const UTILITY_TOOLS = [
-  { id: 'simulator', icon: '🌐', iconBg: '#EFF6FF', title: 'AI虚拟模拟器', desc: '无Carto照样练习实操', url: '' },
+  { id: 'simulator', icon: '🌐', iconBg: '#EFF6FF', title: 'AI虚拟模拟器', desc: '无Carto照样练习实操', url: '/subpackages/secondary/simulator/index?from=practice' },
   { id: 'pvc', icon: '🎯', iconBg: '#EEF2FF', title: '室早定位助手', desc: '智慧交互，辅助读图', url: '/subpackages/practice-tasks/utility-pvc/index' },
   { id: 'aifv', icon: '📄', iconBg: '#ECFDF5', title: 'AIFV 诊断报告', desc: '查看与生成智能报告', url: '/subpackages/practice-tasks/utility-aifv/index' },
   { id: 'pvi', icon: '❤️', iconBg: '#FFF1F2', title: 'PVI 诊断', desc: '病例复盘与算法推荐', url: '/subpackages/practice-tasks/utility-pvi/index' },
@@ -27,6 +27,10 @@ export default function Practice() {
   const goToCamps = () => Taro.navigateTo({ url: '/subpackages/theory-course/camp/index' })
   const goToClass = () => Taro.navigateTo({ url: '/subpackages/theory-course/class/index' })
   const goTo = (url: string) => () => url && Taro.navigateTo({ url })
+  const goToDailyQuiz = () => {
+    const date = encodeURIComponent(dailyQuiz?.dateLabel ?? '')
+    Taro.navigateTo({ url: `/subpackages/secondary/daily-quiz-detail/index?date=${date}` })
+  }
 
   return (
     <ScrollView scrollY className="page-practice">
@@ -97,7 +101,7 @@ export default function Practice() {
               <Text className="practice-quiz-date__num">{(dailyQuiz.dateLabel.split(' ')[0] ?? '')}</Text>
               <Text className="practice-quiz-date__month">{(dailyQuiz.dateLabel.split(' ').slice(1).join(' ') || '')}</Text>
             </View>
-            <Card className="practice-quiz-card">
+            <Card className="practice-quiz-card" onClick={goToDailyQuiz}>
               <View className="practice-quiz-card__tags">
                 {dailyQuiz.tags.map((tag) => (
                   <Text key={tag} className="practice-quiz-card__tag"># {tag}</Text>

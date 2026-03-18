@@ -21,6 +21,7 @@
     "@tarojs/components": "3.6.24",
     "@tarojs/helper": "3.6.24",
     "@tarojs/plugin-framework-react": "3.6.24",
+    "@tarojs/plugin-platform-h5": "^3.6.24",
     "@tarojs/plugin-platform-weapp": "3.6.24",
     "@tarojs/react": "3.6.24",
     "@tarojs/runtime": "3.6.24",
